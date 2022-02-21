@@ -1,27 +1,15 @@
 <template>
-    <div class="gams">
-        <h1>Jogos</h1>
+    <div>
+        <h1 class="title is-3 has-text-white">Jogos</h1>
 
-        <article>
-            <router-link to="/terraria"><h2>Terraria</h2></router-link>
-        </article>
+        <ul>
+            <li><router-link to="/terraria" class="subtitle is-4 has-text-white"><h2>Terraria</h2></router-link></li>
+            <li><router-link to="/csgo" class="subtitle is-4 has-text-white"><h2>CSGO</h2></router-link></li>
+            <li><router-link to="/valorant" class="subtitle is-4 has-text-white"><h2>Valorant</h2></router-link></li>
+            <li><router-link to="/overcooked" class="subtitle is-4 has-text-white"><h2>Overcooked</h2></router-link></li>
+            <li><router-link to="/" class="subtitle is-4 has-text-white">Home</router-link></li>
+        </ul>
 
-        <article>
-            <h2>CS:GO</h2>
-            <p>CS:GO é um joguinho merda que tem como jogar em grupo</p>
-        </article>
-
-        <article>
-            <h2>Valorant</h2>
-            <p>Valorant é um joguinho beta que deveria ser jogado em grupo mas geral se acha bom o sufiente pra jogar solo</p>
-        </article>
-
-        <article>
-            <h2>Overcooked</h2>
-            <p>Overcooked é um joguinho adoravel que é melhor quando se joga em grupo</p>
-        </article>
-
-        <router-link to="/">Home</router-link>
     </div>
 </template>
 <script>
