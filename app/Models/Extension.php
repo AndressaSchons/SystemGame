@@ -9,5 +9,8 @@ class Extension extends Model
 {
     use HasFactory;
 
-
+    public static function create()
+    {
+        return true;
+    }
 }

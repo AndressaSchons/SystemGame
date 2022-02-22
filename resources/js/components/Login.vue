@@ -29,7 +29,7 @@
 <!--          </form>-->
 <!--      </div>-->
       <div id="cadastro">
-          <form method="post" action="/login">
+          <form method="get" action="/login">
               <h1>Cadastro</h1>
 
               <p>
@@ -61,7 +61,7 @@ export default {
     name: "Login",
 
     created() {
-        axios.get('http://localhost:8000/login').then(console.log);
+        axios.get('http://localhost:8000/login');
     }
 }
 </script>

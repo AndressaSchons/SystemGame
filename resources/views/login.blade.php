@@ -1,13 +1,13 @@
-<x-layout>
-    <body>
-        <div id="app">
-            <form method="post" action="./components/login">
-                @csrf
+@extends('layout')
 
-                <router-view></router-view>
-            </form>
-        </div>
+    <form action="{{ route('create-post') }}" method="post">
+        @csrf
+        <label for="nome">Nome</label>
+        <input type="text" name="nome">
+        <label for="summary">Summary</label>
+        <input type="text" name="summary">
+        <label for="explanation">Explanation</label>
+        <input type="text" name="explanation">
 
-    </body>
-
-</x-layout>
+        <button type="submit">Add</button>
+    </form>

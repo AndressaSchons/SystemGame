@@ -2,7 +2,8 @@ import './bootstrap';
 import Home from './components/Home';
 import Terraria from './components/Terraria';
 import ListaJogos from './components/Lista';
-import Login from './components/Login';
+//import Login from './components/Login';
+import Login from '../views/login.blade.php'
 import Valorant from "./components/Valorant";
 import CSGO from "./components/CSGO";
 import Overcooked from "./components/Overcooked";
