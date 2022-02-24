@@ -16,7 +16,7 @@ class CreateExtensionsTable extends Migration
         Schema::create('extensions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('explanation');
+            $table->text('explanation');
             $table->timestamps();
         });
     }
