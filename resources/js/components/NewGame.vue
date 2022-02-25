@@ -2,7 +2,7 @@
     <div>
         <Header />
         <h1 class="title is-2 has-text-white" style="text-align: center">Novo Jogo</h1>
-        <div @submit.prevent="adicionar" class="p-6">
+        <div  class="p-6">
             <input type="hidden" name="_token" :value="csrf">
             <p>
                 <label for="title" class="subtitle is-5 has-text-white">Título</label>
@@ -17,11 +17,15 @@
                 <input id="id_extension" class="input is-link is-rounded mb-4" name="id_extension" required="required" type="text" placeholder="Extensão" v-model="game.id_extension"/>
             </p>
             <p>
+                <label for="slug" class="subtitle is-5 has-text-white">Link</label>
+                <input id="slug" class="input is-link is-rounded mb-4" name="slug" required="required" type="text" placeholder="Link" v-model="game.slug"/>
+            </p>
+            <p>
                 <label for="explanation" class="subtitle is-5 has-text-white">Explicação</label>
                 <input id="explanation" class="input is-link is-rounded mb-4" name="explanation" required="required" type="text" placeholder="Explicação" v-model="game.explanation"/>
             </p>
             <div style="display: flex">
-                <input type="submit" class="button is-medium mb-6 is-rounded is-danger" style="justify-items: end" value="Adicionar">
+                <input type="submit" class="button is-medium mb-6 is-rounded is-danger" @click="adicionar()"  style="justify-items: end" value="Adicionar">
             </div>
         </div>
 
@@ -41,7 +45,8 @@ export default {
                 name: '',
                 summary: '',
                 explanation: '',
-                id_extension: ''
+                id_extension: '',
+                slug: ''
             }
         }
     },

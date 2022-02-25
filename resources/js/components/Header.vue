@@ -21,8 +21,6 @@
                 <a class="navbar-item" href="/games">
                     Jogos
                 </a>
-
-
             </div>
 
             <div class="navbar-end">

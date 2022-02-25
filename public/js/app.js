@@ -2131,8 +2131,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Header"
 });
@@ -2151,7 +2149,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Header.vue");
-//
 //
 //
 //
@@ -2419,6 +2416,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "NewGame",
@@ -2432,7 +2433,8 @@ __webpack_require__.r(__webpack_exports__);
         name: '',
         summary: '',
         explanation: '',
-        id_extension: ''
+        id_extension: '',
+        slug: ''
       }
     };
   },
@@ -21522,200 +21524,225 @@ var render = function () {
         [_vm._v("Novo Jogo")]
       ),
       _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "p-6",
-          on: {
-            submit: function ($event) {
-              $event.preventDefault()
-              return _vm.adicionar.apply(null, arguments)
+      _c("div", { staticClass: "p-6" }, [
+        _c("input", {
+          attrs: { type: "hidden", name: "_token" },
+          domProps: { value: _vm.csrf },
+        }),
+        _vm._v(" "),
+        _c("p", [
+          _c(
+            "label",
+            {
+              staticClass: "subtitle is-5 has-text-white",
+              attrs: { for: "title" },
             },
-          },
-        },
-        [
+            [_vm._v("Título")]
+          ),
+          _vm._v(" "),
           _c("input", {
-            attrs: { type: "hidden", name: "_token" },
-            domProps: { value: _vm.csrf },
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.game.name,
+                expression: "game.name",
+              },
+            ],
+            staticClass: "input is-link is-rounded mb-4",
+            attrs: {
+              id: "title",
+              name: "name",
+              required: "required",
+              type: "text",
+              placeholder: "Título",
+            },
+            domProps: { value: _vm.game.name },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.game, "name", $event.target.value)
+              },
+            },
           }),
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c(
+            "label",
+            {
+              staticClass: "subtitle is-5 has-text-white",
+              attrs: { for: "summary" },
+            },
+            [_vm._v("Resumo")]
+          ),
           _vm._v(" "),
-          _c("p", [
-            _c(
-              "label",
+          _c("input", {
+            directives: [
               {
-                staticClass: "subtitle is-5 has-text-white",
-                attrs: { for: "title" },
+                name: "model",
+                rawName: "v-model",
+                value: _vm.game.summary,
+                expression: "game.summary",
               },
-              [_vm._v("Título")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.game.name,
-                  expression: "game.name",
-                },
-              ],
-              staticClass: "input is-link is-rounded mb-4",
-              attrs: {
-                id: "title",
-                name: "name",
-                required: "required",
-                type: "text",
-                placeholder: "Título",
+            ],
+            staticClass: "input is-link is-rounded mb-4",
+            attrs: {
+              id: "summary",
+              name: "summary",
+              required: "required",
+              type: "text",
+              placeholder: "Resumo",
+            },
+            domProps: { value: _vm.game.summary },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.game, "summary", $event.target.value)
               },
-              domProps: { value: _vm.game.name },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.game, "name", $event.target.value)
-                },
-              },
-            }),
-          ]),
+            },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c(
+            "label",
+            {
+              staticClass: "subtitle is-5 has-text-white",
+              attrs: { for: "id_extension" },
+            },
+            [_vm._v("Extensão")]
+          ),
           _vm._v(" "),
-          _c("p", [
-            _c(
-              "label",
+          _c("input", {
+            directives: [
               {
-                staticClass: "subtitle is-5 has-text-white",
-                attrs: { for: "summary" },
+                name: "model",
+                rawName: "v-model",
+                value: _vm.game.id_extension,
+                expression: "game.id_extension",
               },
-              [_vm._v("Resumo")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.game.summary,
-                  expression: "game.summary",
-                },
-              ],
-              staticClass: "input is-link is-rounded mb-4",
-              attrs: {
-                id: "summary",
-                name: "summary",
-                required: "required",
-                type: "text",
-                placeholder: "Resumo",
+            ],
+            staticClass: "input is-link is-rounded mb-4",
+            attrs: {
+              id: "id_extension",
+              name: "id_extension",
+              required: "required",
+              type: "text",
+              placeholder: "Extensão",
+            },
+            domProps: { value: _vm.game.id_extension },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.game, "id_extension", $event.target.value)
               },
-              domProps: { value: _vm.game.summary },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.game, "summary", $event.target.value)
-                },
-              },
-            }),
-          ]),
+            },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c(
+            "label",
+            {
+              staticClass: "subtitle is-5 has-text-white",
+              attrs: { for: "slug" },
+            },
+            [_vm._v("Link")]
+          ),
           _vm._v(" "),
-          _c("p", [
-            _c(
-              "label",
+          _c("input", {
+            directives: [
               {
-                staticClass: "subtitle is-5 has-text-white",
-                attrs: { for: "id_extension" },
+                name: "model",
+                rawName: "v-model",
+                value: _vm.game.slug,
+                expression: "game.slug",
               },
-              [_vm._v("Extensão")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.game.id_extension,
-                  expression: "game.id_extension",
-                },
-              ],
-              staticClass: "input is-link is-rounded mb-4",
-              attrs: {
-                id: "id_extension",
-                name: "id_extension",
-                required: "required",
-                type: "text",
-                placeholder: "Extensão",
+            ],
+            staticClass: "input is-link is-rounded mb-4",
+            attrs: {
+              id: "slug",
+              name: "slug",
+              required: "required",
+              type: "text",
+              placeholder: "Link",
+            },
+            domProps: { value: _vm.game.slug },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.game, "slug", $event.target.value)
               },
-              domProps: { value: _vm.game.id_extension },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.game, "id_extension", $event.target.value)
-                },
-              },
-            }),
-          ]),
+            },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c(
+            "label",
+            {
+              staticClass: "subtitle is-5 has-text-white",
+              attrs: { for: "explanation" },
+            },
+            [_vm._v("Explicação")]
+          ),
           _vm._v(" "),
-          _c("p", [
-            _c(
-              "label",
+          _c("input", {
+            directives: [
               {
-                staticClass: "subtitle is-5 has-text-white",
-                attrs: { for: "explanation" },
+                name: "model",
+                rawName: "v-model",
+                value: _vm.game.explanation,
+                expression: "game.explanation",
               },
-              [_vm._v("Explicação")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.game.explanation,
-                  expression: "game.explanation",
-                },
-              ],
-              staticClass: "input is-link is-rounded mb-4",
-              attrs: {
-                id: "explanation",
-                name: "explanation",
-                required: "required",
-                type: "text",
-                placeholder: "Explicação",
+            ],
+            staticClass: "input is-link is-rounded mb-4",
+            attrs: {
+              id: "explanation",
+              name: "explanation",
+              required: "required",
+              type: "text",
+              placeholder: "Explicação",
+            },
+            domProps: { value: _vm.game.explanation },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.game, "explanation", $event.target.value)
               },
-              domProps: { value: _vm.game.explanation },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.game, "explanation", $event.target.value)
-                },
+            },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticStyle: { display: "flex" } }, [
+          _c("input", {
+            staticClass: "button is-medium mb-6 is-rounded is-danger",
+            staticStyle: { "justify-items": "end" },
+            attrs: { type: "submit", value: "Adicionar" },
+            on: {
+              click: function ($event) {
+                return _vm.adicionar()
               },
-            }),
-          ]),
-          _vm._v(" "),
-          _vm._m(0),
-        ]
-      ),
+            },
+          }),
+        ]),
+      ]),
     ],
     1
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticStyle: { display: "flex" } }, [
-      _c("input", {
-        staticClass: "button is-medium mb-6 is-rounded is-danger",
-        staticStyle: { "justify-items": "end" },
-        attrs: { type: "submit", value: "Adicionar" },
-      }),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
