@@ -14,11 +14,11 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item">
+                <a class="navbar-item" href="/">
                     Home
                 </a>
 
-                <a class="navbar-item">
+                <a class="navbar-item" href="/games">
                     Jogos
                 </a>
 
@@ -30,6 +30,13 @@
                     <div class="buttons">
                         <a class="button is-light">
                             Log in
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-light" href="">
+                            Log Out
                         </a>
                     </div>
                 </div>

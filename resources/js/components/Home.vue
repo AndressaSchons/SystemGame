@@ -1,23 +1,22 @@
 <template>
     <div>
         <Header />
-        <h1 class="title is-1 mt-6 p-4 has-text-white">Olá, bem vindo ao App da Schonschii</h1>
+        <h1 class="title is-1 mt-6 p-4 has-text-white has-text-centered">Olá</h1>
 
 
-        <div class="columns"> <!-- v-for='games in game' (mostrar jogo por jogo) [falta linkar a API] -->
+        <div class="columns ml-6 mr-6">
             <div class="column button is-link is-medium m-4 align-content-center">
-                <router-link to="/lista-jogos" class="subtitle is-4 has-text-white">Lista de Jogos</router-link>
+                <router-link to="/games" class="subtitle is-4 has-text-white">Lista de Jogos</router-link>
             </div>
 
             <div class="column button is-link is-medium m-4 align-content-center">
                 <router-link to="/login" class="subtitle is-4 has-text-white">Login</router-link>
             </div>
 
-            <div class="column subtitle is-4 has-text-white button is-link is-medium m-4 align-content-center">
-                <p>Dashboard</p>
+            <div class="column button is-link is-medium m-4 align-content-center">
+                <router-link to="/dashboard" class="subtitle is-4 has-text-white">Dashboard</router-link>
             </div>
         </div>
-
     </div>
 
 </template>
@@ -26,13 +25,8 @@ import Header from "./Header";
 export default {
     name: 'Home',
     components: {Header},
-
 }
 </script>
 <style>
-    .container{
-        color: white;
-        text-decoration: none;
-        text-align: center;
-    }
+
 </style>
