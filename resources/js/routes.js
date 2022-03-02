@@ -4,6 +4,8 @@ import ListaJogos from './components/Lista';
 import Login from './components/Login';
 import NewGame from './components/NewGame';
 import Dashboard from "./components/Dashboard";
+import GetGame from "./components/GetGame";
+import UpdateGame from "./components/UpdateGame";
 
 
 export default {
@@ -24,12 +26,21 @@ export default {
             component: Login,
         },
         {
-            path: '/newgame',
+            path: '/new-game',
             component: NewGame
         },
         {
             path: '/dashboard',
             component: Dashboard
         },
+        {
+            path: '/api/get-game/:id',
+            component: GetGame
+        },
+        {
+            path: '/api/update-game/:id',
+            component: UpdateGame,
+            props: true
+        }
     ]
 }

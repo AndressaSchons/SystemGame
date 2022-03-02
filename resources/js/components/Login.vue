@@ -4,50 +4,51 @@
         <div class="text has-text-white p-6 is-align-items-center ">
             <template v-if="login">
                 <div class="ml-4 mr-4" @submit.prevent="loginaccont">
-                    <h1 class="title is-2 text has-text-white">Login</h1>
+                    <h1 class="title is-2 text has-text-white has-text-centered">Login</h1>
                     <input type="hidden" name="_token" :value="csrf">
 
                     <p>
-                        <label for="nome_login">NOME</label>
-                        <input id="nome_login" name="nome_login" required="required" type="text" placeholder="Email" v-model="usuario.nome_login"/>
+                        <label for="nome_login" class="subtitle is-5 has-text-white">Nome</label>
+                        <input id="nome_login" class="input is-link is-rounded mb-4" name="nome_login" required="required" type="text" placeholder="Email" v-model="usuario.nome_login"/>
                     </p>
                     <p>
-                        <label for="password_login">SENHA</label>
-                        <input id="password_login" name="password_login" required="required" type="password" placeholder="Senha" v-model="usuario.password_login"/>
+                        <label for="password_login" class="subtitle is-5 has-text-white">Senha</label>
+                        <input id="password_login" class="input is-link is-rounded mb-4" name="password_login" required="required" type="password" placeholder="Senha" v-model="usuario.password_login"/>
                     </p>
                     <p>
-                        <button type="submit" value="Login">Login</button>
+                        <button type="submit" class="button is-medium is-rounded is-danger" value="Login" @click="loginaccont()">Login</button>
                     </p>
                     <p class="link mt-6">
                         Ainda não tem conta?
-                        <button @click.prevent="loginChange()">Cadastre-se</button>
+                        <button @click.prevent="loginChange()" class="button is-small is-rounded is-warning">Cadastre-se</button>
                     </p>
                 </div>
             </template>
 
-            <template>
-                <form method="post" v-if="!login" @submit.prevent="salvar">
+            <template v-if="!login">
+                <div>
                     <input type="hidden" name="_token" :value="csrf">
-                    <h1 class="title is-2 text has-text-white">Cadastro</h1>
+                    <h1 class="title is-2 text has-text-white has-text-centered">Cadastro</h1>
                     <p>
-                        <label for="name">NOME</label>
-                        <input id="name" name="name" required="required" type="text" placeholder="nome" v-model="user.name"/>
+                        <label for="name" class="subtitle is-5 has-text-white">Nome</label>
+                        <input id="name" name="name" class="input is-link is-rounded mb-4" required="required" type="text" placeholder="Nome" v-model="user.name"/>
                     <p>
-                        <label for="email">E-MAIL</label>
-                        <input id="email" name="email" required="required" type="email" placeholder="contato@htmlecsspro.com" v-model="user.email"/>
+                        <label for="email" class="subtitle is-5 has-text-white">E-mail</label>
+                        <input id="email" name="email" class="input is-link is-rounded mb-4" required="required" type="email" placeholder="contato@htmlecsspro.com" v-model="user.email"/>
                     </p>
                     <p>
-                        <label for="password">SENHA</label>
-                        <input id="password" name="password" required="required" type="password" placeholder="ex. 1234" v-model="user.password"/>
+                        <label for="password" class="subtitle is-5 has-text-white">Senha</label>
+                        <input id="password" name="password" class="input is-link is-rounded mb-4" required="required" type="password" v-model="user.password"/>
+                        <span v-if="error" class="has-text-centered has-text-danger">{{error}}</span>
                     <p>
-                        <input type="submit" value="Cadastrar"/>
+                        <button type="submit" class="button is-medium is-rounded is-danger" @click.prevent="salvar()">Cadastrar</button>
                     </p>
 
                     <p class="link mt-6">
-                        Possui conta>
-                        <button @click.prevent="loginChange">Login</button>
+                        Possui conta?
+                        <button @click.prevent="loginChange" class="button is-small is-rounded is-warning">Login</button>
                     </p>
-                </form>
+                </div>
             </template>
         </div>
     </div>
@@ -64,6 +65,7 @@ export default {
         return{
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             login: true,
+            error: null,
             user:{
                 name: '',
                 email: '',
@@ -86,16 +88,20 @@ export default {
         salvar(){
             axios.post('/api/login', this.user)
                 .then((response) => {
-                    console.log(response);
+                    alert("Usuário criado");
                 })
-                // .catch((error) => {
-                //     console.log(error.response.data.errors);
-                // })
+                .catch((error) => {
+                    this.errors = error.response.data.erro;
+                })
         },
         loginaccont(){
-            axios.post('/api/logoInAccont', this.usuario)
+            axios.post('/api/logInAccont', this.usuario)
                 .then((response) => {
                     console.log(response);
+                    alert("Usuário Logado");
+                })
+                .catch((error) => {
+                    this.errors = error.response.data.erro;
                 })
         }
     }

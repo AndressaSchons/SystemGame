@@ -22,18 +22,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('games', [Api\GameController::class, 'index']);
-Route::get('extensions', [Api\ExtensionController::class, 'index']);
+Route::post('new-game', [Api\GameController::class, 'create']);
+Route::get('get-game/{id}', [Api\GameController::class, 'getGame']);
+Route::delete('get-game/{id}', [Api\GameController::class, 'destroy']);
+Route::put('update-game/{id}', [Api\GameController::class, 'update']);
 
-Route::get('/create-game', [Api\GameController::class, 'a']);
-Route::post('newgame', [Api\GameController::class, 'create']);
+Route::post('login', [Api\RegisterController::class, 'store']);
+//Route::get('enter', [Api\RegisterController::class, 'show']);
 
-Route::get('getGame', [Api\GameController::class, 'getContent']);
-
-
-Route::post('login', [Api\RegisterController::class, 'store'])->middleware('guest');
-Route::get('enter', [Api\RegisterController::class, 'show']);
-
-Route::post('logInAccont', [Api\RegisterController::class, 'login'])->middleware('guest');
-Route::post('logout', [Api\SessionsController::class, 'destroy']);
-
-//Route::get('games/create', [Api\GameController::class, 'create']);
+Route::post('logInAccount', [Api\RegisterController::class, 'login']);
+Route::post('logout', [Api\RegisterController::class, 'destroy']);

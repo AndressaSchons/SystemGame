@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="height: 100vh">
         <Header />
         <h1 class="title is-1 mt-6 p-4 has-text-white has-text-centered">Olá</h1>
 

@@ -11,24 +11,7 @@ class Game extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome', ''];
-    public static function findOrFail($id)
-    {
-
-        if (!file_exists($id)) {
-            ddd('file does not exist');
-        }
-
-        $game = file_get_contents($id);
-
-        return $game;
-
-    }
-
-    public function extension(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(Extension::class);
+    protected $fillable = ['nome', 'summary', 'explanation'];
 
 
-    }
 }

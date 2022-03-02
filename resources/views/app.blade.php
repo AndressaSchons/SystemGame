@@ -13,6 +13,7 @@
     <style>
         body{
             background-color: #000080;
+                width: 100%;
         }
         #app{
             font-family: 'Roboto Mono', monospace;
@@ -20,7 +21,7 @@
         }
     </style>
 
-<body style="height: 100vh">
+<body style="">
 
     <div id="app">
         <router-view></router-view>
