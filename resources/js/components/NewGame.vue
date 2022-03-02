@@ -1,5 +1,5 @@
 <template>
-    <div style="height: 100vh;">
+    <div style="min-height: 100vh;">
         <Header />
         <h1 class="title is-2 has-text-white mt-6" style="text-align: center">Novo Jogo</h1>
 
@@ -25,16 +25,17 @@
                 <input type="submit" class="button is-medium mb-6 is-rounded is-danger" @click="adicionar()"  style="justify-items: end" value="Adicionar">
             </div>
         </div>
-
+    <Rodape />
     </div>
 </template>
 
 <script>
 import Header from "./Header";
+import Rodape from "./Rodape";
 
 export default {
     name: "NewGame",
-    components: {Header},
+    components: {Rodape, Header},
     data() {
         return {
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),

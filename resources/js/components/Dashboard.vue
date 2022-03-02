@@ -1,10 +1,10 @@
 <template>
-    <div style="height: 100%">
+    <div style="min-height: 100vh">
         <Header />
         <h1 class="title is-3 has-text-white has-text-centered mt-6">Dashboard</h1>
          <div class="container has-text-centered">
-            <div class='columns is-mobile is-centered'>
-                <div class='column is-6'>
+            <div class='columns is-centered'>
+                <div class='column is-6 dashboard'>
                     <div>
                         <h1 class="title has-text-white">Users Information</h1>
                         <hr>
@@ -67,5 +67,9 @@ export default {
 </script>
 
 <style scoped>
-
+.dashboard{
+    max-height: 700px;
+    overflow-y: auto;
+    width: auto;
+}
 </style>

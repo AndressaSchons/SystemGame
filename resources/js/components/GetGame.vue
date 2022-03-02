@@ -18,18 +18,17 @@
                 <button class="button is-small is-danger is-rounded" @click="deleteItem(game.id)">Delete</button>
                 <router-link to="/games" class="button is-link is-small is-rounded">Back</router-link>
             </div>
-
         </div>
-
-
+        <Rodape />
     </div>
 
 </template>
 <script>
 import Header from "./Header";
+import Rodape from "./Rodape";
 export default {
     name: 'Games',
-    components: {Header},
+    components: {Rodape, Header},
     data: function (){
         return{
             game: [],

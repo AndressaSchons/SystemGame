@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 use function dd;
@@ -41,7 +42,7 @@ class RegisterController extends Controller
          $user->name = $request['name'];
          $user->user_name = $request['user_name'];
          $user->email = $request['email'];
-         $user->password = $request['password'];
+         $user->password = Hash::make($request['password']);
 
         $user->save();
         Auth::login($user);
@@ -51,37 +52,29 @@ class RegisterController extends Controller
 
     public function login(Request $request){
 
-        $request->only([
+        $data = $request->only([
             'user_name',
             'password'
         ]);
 
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($data,[
             'user_name'=> ['required'],
             'password'=>['required']
         ]);
 
+        if ($validator->fails()) {
+            return ['erro' => $validator->errors()];
+        }
 
-        if(Auth::attempt((array)$validator)){
+        if(Auth::attempt($data)){
             return response()->json(['login'=> 'Deu tudo certo']);
         }else{
             return response()->json(['error'=> 'E-mail e/ou senha incorretos'], 422);
         }
     }
 
-//    public function getName()
-
-    public function show(int $id) {
-        $user = User::find($id);
-
-        return view('user-show', [
-            'user' => $user
-        ]);
-    }
-
     public function destroy(User $user) {
         $user->delete();
-        echo "user, excluido";
         return redirect('/');
     }
 }

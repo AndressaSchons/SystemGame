@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="min-height: 100vh">
         <Header />
         <h1 class="title is-2 has-text-white mt-6" style="text-align: center">{{ game.name }}</h1>
         <div  class="p-6">
@@ -21,15 +21,17 @@
                 <input type="submit" class="button is-medium mb-6 is-rounded is-danger" @click="update()"  style="justify-items: end" value="Salvar">
             </div>
         </div>
+        <Rodape />
     </div>
 
 </template>
 
 <script>
 import Header from "./Header";
+import Rodape from "./Rodape";
 export default {
     name: "UpdateGame",
-    components: {Header},
+    components: {Rodape, Header},
 
     data: function (){
         return{

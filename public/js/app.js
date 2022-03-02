@@ -2147,8 +2147,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Header.vue");
-//
-//
+/* harmony import */ var _Rodape__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Rodape */ "./resources/js/components/Rodape.vue");
 //
 //
 //
@@ -2175,9 +2174,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Games',
   components: {
+    Rodape: _Rodape__WEBPACK_IMPORTED_MODULE_1__["default"],
     Header: _Header__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
@@ -2287,6 +2288,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Header.vue");
+/* harmony import */ var _Rodape__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Rodape */ "./resources/js/components/Rodape.vue");
+//
 //
 //
 //
@@ -2309,19 +2312,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Home',
   components: {
+    Rodape: _Rodape__WEBPACK_IMPORTED_MODULE_1__["default"],
     Header: _Header__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  data: function data() {
-    return {
-      users: [],
-      userName: '',
-      user: null
-    };
-  },
-  methods: {}
+  methods: {
+    routeDash: function routeDash() {
+      this.$router.push({
+        path: 'dashboard'
+      });
+    },
+    routeLog: function routeLog() {
+      this.$router.push({
+        path: 'login'
+      });
+    },
+    routeGame: function routeGame() {
+      this.$router.push({
+        path: 'games'
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -2339,6 +2353,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Header.vue");
 /* harmony import */ var _Search__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Search */ "./resources/js/components/Search.vue");
+/* harmony import */ var _Rodape__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Rodape */ "./resources/js/components/Rodape.vue");
 //
 //
 //
@@ -2376,11 +2391,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'ListaJogos',
   components: {
+    Rodape: _Rodape__WEBPACK_IMPORTED_MODULE_2__["default"],
     Search: _Search__WEBPACK_IMPORTED_MODULE_1__["default"],
     Header: _Header__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -2516,7 +2534,7 @@ __webpack_require__.r(__webpack_exports__);
       },
       usuario: {
         user_name: '',
-        password_login: ''
+        password: ''
       }
     };
   },
@@ -2539,9 +2557,10 @@ __webpack_require__.r(__webpack_exports__);
     loginaccont: function loginaccont() {
       var _this2 = this;
 
-      axios.post('/api/logInAccont', this.usuario).then(function (response) {
-        console.log(response);
-        alert("Usuário Logado");
+      axios.post('/api/logInAccount', this.usuario).then(function (response) {
+        _this2.$router.push({
+          path: '/'
+        });
       })["catch"](function (error) {
         _this2.errors = error.response.data.erro;
       });
@@ -2563,6 +2582,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Header.vue");
+/* harmony import */ var _Rodape__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Rodape */ "./resources/js/components/Rodape.vue");
 //
 //
 //
@@ -2595,9 +2615,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "NewGame",
   components: {
+    Rodape: _Rodape__WEBPACK_IMPORTED_MODULE_1__["default"],
     Header: _Header__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
@@ -2716,6 +2738,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Header.vue");
+/* harmony import */ var _Rodape__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Rodape */ "./resources/js/components/Rodape.vue");
+//
 //
 //
 //
@@ -2744,9 +2768,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "UpdateGame",
   components: {
+    Rodape: _Rodape__WEBPACK_IMPORTED_MODULE_1__["default"],
     Header: _Header__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
@@ -2883,6 +2909,30 @@ __webpack_require__.r(__webpack_exports__);
     props: true
   }]
 });
+
+/***/ }),
+
+/***/ "./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Dashboard.vue?vue&type=style&index=0&id=040e2ab9&scoped=true&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Dashboard.vue?vue&type=style&index=0&id=040e2ab9&scoped=true&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/laravel-mix/node_modules/css-loader/dist/runtime/api.js */ "./node_modules/laravel-mix/node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.dashboard[data-v-040e2ab9]{\n    max-height: 700px;\n    overflow-y: auto;\n    width: auto;\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
 
 /***/ }),
 
@@ -20429,6 +20479,36 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Dashboard.vue?vue&type=style&index=0&id=040e2ab9&scoped=true&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Dashboard.vue?vue&type=style&index=0&id=040e2ab9&scoped=true&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_style_index_0_id_040e2ab9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Dashboard.vue?vue&type=style&index=0&id=040e2ab9&scoped=true&lang=css& */ "./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Dashboard.vue?vue&type=style&index=0&id=040e2ab9&scoped=true&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_style_index_0_id_040e2ab9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_style_index_0_id_040e2ab9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GetGame.vue?vue&type=style&index=0&lang=css&":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GetGame.vue?vue&type=style&index=0&lang=css& ***!
@@ -20781,15 +20861,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Dashboard_vue_vue_type_template_id_040e2ab9_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=template&id=040e2ab9&scoped=true& */ "./resources/js/components/Dashboard.vue?vue&type=template&id=040e2ab9&scoped=true&");
 /* harmony import */ var _Dashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=script&lang=js& */ "./resources/js/components/Dashboard.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Dashboard_vue_vue_type_style_index_0_id_040e2ab9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=style&index=0&id=040e2ab9&scoped=true&lang=css& */ "./resources/js/components/Dashboard.vue?vue&type=style&index=0&id=040e2ab9&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
+;
 
 
 /* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _Dashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Dashboard_vue_vue_type_template_id_040e2ab9_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
   _Dashboard_vue_vue_type_template_id_040e2ab9_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
@@ -21322,6 +21404,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Dashboard.vue?vue&type=style&index=0&id=040e2ab9&scoped=true&lang=css&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/Dashboard.vue?vue&type=style&index=0&id=040e2ab9&scoped=true&lang=css& ***!
+  \********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_style_index_0_id_040e2ab9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Dashboard.vue?vue&type=style&index=0&id=040e2ab9&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Dashboard.vue?vue&type=style&index=0&id=040e2ab9&scoped=true&lang=css&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/GetGame.vue?vue&type=style&index=0&lang=css&":
 /*!******************************************************************************!*\
   !*** ./resources/js/components/GetGame.vue?vue&type=style&index=0&lang=css& ***!
@@ -21536,7 +21631,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticStyle: { height: "100%" } },
+    { staticStyle: { "min-height": "100vh" } },
     [
       _c("Header"),
       _vm._v(" "),
@@ -21547,8 +21642,8 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "container has-text-centered" }, [
-        _c("div", { staticClass: "columns is-mobile is-centered" }, [
-          _c("div", { staticClass: "column is-6" }, [
+        _c("div", { staticClass: "columns is-centered" }, [
+          _c("div", { staticClass: "column is-6 dashboard" }, [
             _vm._m(0),
             _vm._v(" "),
             _c("table", { staticClass: "table" }, [
@@ -21700,6 +21795,8 @@ var render = function () {
           1
         ),
       ]),
+      _vm._v(" "),
+      _c("Rodape"),
     ],
     1
   )
@@ -21851,7 +21948,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticStyle: { height: "100vh" } },
+    { staticStyle: { "min-height": "100vh" } },
     [
       _c("Header"),
       _vm._v(" "),
@@ -21867,18 +21964,9 @@ var render = function () {
           {
             staticClass:
               "column button is-link is-medium m-4 align-content-center",
+            on: { click: _vm.routeGame },
           },
-          [
-            _c(
-              "router-link",
-              {
-                staticClass: "subtitle is-4 has-text-white",
-                attrs: { to: "/games" },
-              },
-              [_vm._v("Lista de Jogos")]
-            ),
-          ],
-          1
+          [_vm._v("\n            Jogos\n        ")]
         ),
         _vm._v(" "),
         _c(
@@ -21886,18 +21974,9 @@ var render = function () {
           {
             staticClass:
               "column button is-link is-medium m-4 align-content-center",
+            on: { click: _vm.routeLog },
           },
-          [
-            _c(
-              "router-link",
-              {
-                staticClass: "subtitle is-4 has-text-white",
-                attrs: { to: "/login" },
-              },
-              [_vm._v("Login")]
-            ),
-          ],
-          1
+          [_vm._v("\n            Login\n        ")]
         ),
         _vm._v(" "),
         _c(
@@ -21905,20 +21984,13 @@ var render = function () {
           {
             staticClass:
               "column button is-link is-medium m-4 align-content-center",
+            on: { click: _vm.routeDash },
           },
-          [
-            _c(
-              "router-link",
-              {
-                staticClass: "subtitle is-4 has-text-white",
-                attrs: { to: "/dashboard" },
-              },
-              [_vm._v("Dashboard")]
-            ),
-          ],
-          1
+          [_vm._v("\n            Dashboard\n        ")]
         ),
       ]),
+      _vm._v(" "),
+      _c("Rodape"),
     ],
     1
   )
@@ -21948,7 +22020,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticStyle: { height: "100%" } },
+    { staticStyle: { "min-height": "100vh" } },
     [
       _c("Header"),
       _vm._v(" "),
@@ -22027,6 +22099,8 @@ var render = function () {
           ]),
         ])
       }),
+      _vm._v(" "),
+      _c("Rodape"),
     ],
     2
   )
@@ -22072,6 +22146,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticStyle: { "min-height": "100vh" } },
     [
       _c("Header"),
       _vm._v(" "),
@@ -22128,7 +22203,6 @@ var render = function () {
                         ],
                         staticClass: "input is-link is-rounded mb-4",
                         attrs: {
-                          id: "user_name",
                           name: "user_name",
                           required: "required",
                           type: "text",
@@ -22165,8 +22239,8 @@ var render = function () {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.usuario.password_login,
-                            expression: "usuario.password_login",
+                            value: _vm.usuario.password,
+                            expression: "usuario.password",
                           },
                         ],
                         staticClass: "input is-link is-rounded mb-4",
@@ -22177,7 +22251,7 @@ var render = function () {
                           type: "password",
                           placeholder: "Senha",
                         },
-                        domProps: { value: _vm.usuario.password_login },
+                        domProps: { value: _vm.usuario.password },
                         on: {
                           input: function ($event) {
                             if ($event.target.composing) {
@@ -22185,7 +22259,7 @@ var render = function () {
                             }
                             _vm.$set(
                               _vm.usuario,
-                              "password_login",
+                              "password",
                               $event.target.value
                             )
                           },
@@ -22295,7 +22369,7 @@ var render = function () {
                         staticClass: "subtitle is-5 has-text-white",
                         attrs: { for: "user_name" },
                       },
-                      [_vm._v("Nome")]
+                      [_vm._v("User name")]
                     ),
                     _vm._v(" "),
                     _c("input", {
@@ -22310,7 +22384,7 @@ var render = function () {
                       staticClass: "input is-link is-rounded mb-4",
                       attrs: {
                         id: "user_name",
-                        name: "name",
+                        name: "user_name",
                         required: "required",
                         type: "text",
                         placeholder: "User Name",
@@ -22480,7 +22554,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticStyle: { height: "100vh" } },
+    { staticStyle: { "min-height": "100vh" } },
     [
       _c("Header"),
       _vm._v(" "),
@@ -22641,6 +22715,8 @@ var render = function () {
         ],
         2
       ),
+      _vm._v(" "),
+      _c("Rodape"),
     ],
     1
   )
@@ -22678,7 +22754,7 @@ var staticRenderFns = [
     return _c(
       "nav",
       {
-        staticClass: "navbar is-fixed-bottom",
+        staticClass: "navbar is-fixed-bottom is-link",
         attrs: { role: "navigation", "aria-label": "main navigation" },
       },
       [
@@ -22722,25 +22798,8 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.keyword,
-          expression: "keyword",
-        },
-      ],
-      staticClass: "input is-medium is-warning",
+      staticClass: "input is-medium is-warning is-disabled",
       attrs: { type: "text", placeholder: "Busca" },
-      domProps: { value: _vm.keyword },
-      on: {
-        input: function ($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.keyword = $event.target.value
-        },
-      },
     }),
     _vm._v(" "),
     _vm.game.length > 0
@@ -22782,6 +22841,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticStyle: { "min-height": "100vh" } },
     [
       _c("Header"),
       _vm._v(" "),
@@ -22942,6 +23002,8 @@ var render = function () {
         ],
         2
       ),
+      _vm._v(" "),
+      _c("Rodape"),
     ],
     1
   )

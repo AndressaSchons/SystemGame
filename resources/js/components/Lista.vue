@@ -1,5 +1,5 @@
 <template>
-    <div style="height: 100%;">
+    <div style="min-height: 100vh">
         <Header/>
         <h1 class="title is-3 has-text-white has-text-centered mt-6">Jogos</h1>
         <div class="columns m-4" style="display: flex; justify-content:center">
@@ -33,14 +33,16 @@
                 </div>
             </div>
         </div>
+        <Rodape />
     </div>
 </template>
 <script>
 import Header from "./Header";
 import Search from "./Search";
+import Rodape from "./Rodape";
 export default {
     name:'ListaJogos',
-    components: {Search, Header},
+    components: {Rodape, Search, Header},
     data: function (){
         return{
             games: [],
