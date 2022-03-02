@@ -1,19 +1,19 @@
 <template>
-    <div style="min-height: 100vh">
+    <div style="min-height: 100vh; max-height: 100%">
         <Header/>
         <h1 class="title is-3 has-text-white has-text-centered mt-6">Jogos</h1>
         <div class="columns m-4" style="display: flex; justify-content:center">
             <div class="column is-one-quarter">
-                <Search />
+                <Search/>
             </div>
             <div class="column is-one-quarter"></div>
             <div class="column is-one-quarter">
-                <p href="/new-game" class="button is-medium mb-6 is-warning">Adicionar Jogo</p>
+                <p class="button is-medium mb-6 is-warning" @click="routeAdd">Adicionar Jogo</p>
             </div>
         </div>
 
         <div v-for="game in games">
-            <div class="columns ml-6 mr-6">
+            <div class="columns ml-6 mr-6 mb-4">
                 <div class="column">
                     <a class="subtitle is-4 has-text-white mb-6">
                         <h2>{{ game.name }}</h2>
@@ -33,18 +33,17 @@
                 </div>
             </div>
         </div>
-        <Rodape />
     </div>
 </template>
 <script>
 import Header from "./Header";
 import Search from "./Search";
-import Rodape from "./Rodape";
+
 export default {
-    name:'ListaJogos',
-    components: {Rodape, Search, Header},
-    data: function (){
-        return{
+    name: 'ListaJogos',
+    components: {Search, Header},
+    data: function () {
+        return {
             games: [],
             search: null,
         }
@@ -55,36 +54,29 @@ export default {
     },
 
     methods: {
-        loadGames: function (){
+        loadGames: function () {
             axios.get('/api/games')
-            .then((response)=> {
-                this.games = response.data;
-            })
-            .catch(function (error) {
-                console.log(error)
-            })
+                .then((response) => {
+                    this.games = response.data;
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })
         },
-        getGame(id){
-            this.$router.push({path:`api/get-game/${id}`})
+        getGame(id) {
+            this.$router.push({path: `api/get-game/${id}`})
         },
 
-        editGame(id){
+        editGame(id) {
             this.$router.push({path: `api/update-game/${id}`})
         },
+        routeAdd() {
+            this.$router.push({path: 'new-game'})
+        }
 
-        // getSearch(word){
-        //   axios.post(\`/api/search/${word}\`)
-        //     .then((response)=>{
-        //         console.log(response);
-        //     })
-        // },
     },
 }
 </script>
 <style>
-.gams{
-    text-decoration: none;
-    color: brown;
-}
 
 </style>

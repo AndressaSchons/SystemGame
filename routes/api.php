@@ -3,7 +3,6 @@
 use App\Http\Controllers\Api\SessionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\Api;
 
 /*
@@ -30,7 +29,6 @@ Route::put('update-game/{id}', [Api\GameController::class, 'update']);
 
 Route::get('users', [Api\RegisterController::class, 'index']);
 Route::post('login', [Api\RegisterController::class, 'store']);
-//Route::get('enter', [Api\RegisterController::class, 'show']);
 
 Route::post('logInAccount', [Api\RegisterController::class, 'login']);
 Route::post('logout', [Api\RegisterController::class, 'destroy']);

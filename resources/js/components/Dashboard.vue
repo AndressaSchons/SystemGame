@@ -1,8 +1,8 @@
 <template>
     <div style="min-height: 100vh">
-        <Header />
+        <Header/>
         <h1 class="title is-3 has-text-white has-text-centered mt-6">Dashboard</h1>
-         <div class="container has-text-centered">
+        <div class="container has-text-centered">
             <div class='columns is-centered'>
                 <div class='column is-6 dashboard'>
                     <div>
@@ -11,38 +11,37 @@
                     </div>
                     <table class='table'>
                         <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>User</th>
-                                <th>User Name</th>
-                                <th>Email</th>
-                            </tr>
+                        <tr>
+                            <th>Id</th>
+                            <th>User</th>
+                            <th>User Name</th>
+                            <th>Email</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="user in users">
-                                <td>{{ user.id }}</td>
-                                <td>{{ user.name }}</td>
-                                <td>{{ user.user_name }}</td>
-                                <td>{{ user.email }}</td>
-                            </tr>
+                        <tr v-for="user in users">
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.user_name }}</td>
+                            <td>{{ user.email }}</td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <Rodape />
     </div>
 </template>
 
 <script>
 import Header from "./Header";
-import Rodape from "./Rodape";
+
 export default {
     name: "Dashboard",
-    components: {Rodape, Header},
+    components: {Header},
 
-    data: function (){
-        return{
+    data: function () {
+        return {
             users: [],
         }
     },
@@ -67,7 +66,7 @@ export default {
 </script>
 
 <style scoped>
-.dashboard{
+.dashboard {
     max-height: 700px;
     overflow-y: auto;
     width: auto;

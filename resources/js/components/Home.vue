@@ -1,6 +1,6 @@
 <template>
     <div style="min-height: 100vh">
-        <Header />
+        <Header/>
         <h1 class="title is-1 mt-6 p-4 has-text-white has-text-centered">Olá</h1>
 
         <div class="columns ml-6 mr-6">
@@ -16,25 +16,24 @@
                 Dashboard
             </div>
         </div>
-        <Rodape/>
     </div>
 
 </template>
 <script>
 import Header from "./Header";
-import Rodape from "./Rodape";
+
 export default {
     name: 'Home',
-    components: {Rodape, Header},
+    components: {Header},
 
     methods: {
-        routeDash(){
+        routeDash() {
             this.$router.push({path: 'dashboard'})
         },
-        routeLog(){
+        routeLog() {
             this.$router.push({path: 'login'})
         },
-        routeGame(){
+        routeGame() {
             this.$router.push({path: 'games'})
         }
     }
