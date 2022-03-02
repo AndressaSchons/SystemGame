@@ -24,6 +24,7 @@ import Header from "./Header";
 export default {
     name: 'Home',
     components: {Header},
+
 }
 </script>
 <style>

@@ -15,22 +15,21 @@ use function view;
 class RegisterController extends Controller
 {
     public function index(){
-        return view('app');
+        return User::all();
     }
 
-    /**
-     * @throws \Exception
-     */
     public function store(Request $request){
 
         $request->only([
             'name',
+            'user_name',
             'email',
             'password'
         ]);
 
          $validador = Validator::make($request ->all(), [
              'name' => ['required', 'max:255'],
+             'user_name' => ['required', 'min:4', 'max:10'],
              'email' => ['required','email','max:255'],
              'password' => ['required','min:6']
          ]);
@@ -40,6 +39,7 @@ class RegisterController extends Controller
 
          $user = new User;
          $user->name = $request['name'];
+         $user->user_name = $request['user_name'];
          $user->email = $request['email'];
          $user->password = $request['password'];
 
@@ -52,12 +52,12 @@ class RegisterController extends Controller
     public function login(Request $request){
 
         $request->only([
-            'name',
+            'user_name',
             'password'
         ]);
 
         $validator = Validator::make($request->all(),[
-            'name'=> ['required'],
+            'user_name'=> ['required'],
             'password'=>['required']
         ]);
 
@@ -69,6 +69,7 @@ class RegisterController extends Controller
         }
     }
 
+//    public function getName()
 
     public function show(int $id) {
         $user = User::find($id);

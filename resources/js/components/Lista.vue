@@ -8,18 +8,16 @@
             </div>
             <div class="column is-one-quarter"></div>
             <div class="column is-one-quarter">
-                <a href="/new-game" class="button is-medium mb-6 is-warning">Adicionar Jogo</a>
+                <p href="/new-game" class="button is-medium mb-6 is-warning">Adicionar Jogo</p>
             </div>
         </div>
 
         <div v-for="game in games">
             <div class="columns ml-6 mr-6">
                 <div class="column">
-                    <a>
-                        <router-link to="get-game/{$id}" class="subtitle is-4 has-text-white">
-                            <h2>{{ game.name }}</h2>
-                            <p class="subtitle is-5 has-text-white">{{ game.summary }}</p><br />
-                        </router-link>
+                    <a class="subtitle is-4 has-text-white mb-6">
+                        <h2>{{ game.name }}</h2>
+                        <p class="subtitle is-5 has-text-white">{{ game.summary }}</p>
                     </a>
                 </div>
 

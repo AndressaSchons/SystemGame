@@ -8,8 +8,8 @@
                     <input type="hidden" name="_token" :value="csrf">
 
                     <p>
-                        <label for="nome_login" class="subtitle is-5 has-text-white">Nome</label>
-                        <input id="nome_login" class="input is-link is-rounded mb-4" name="nome_login" required="required" type="text" placeholder="Email" v-model="usuario.nome_login"/>
+                        <label for="user_name" class="subtitle is-5 has-text-white">User name</label>
+                        <input id="user_name" class="input is-link is-rounded mb-4" name="user_name" required="required" type="text" placeholder="Email" v-model="usuario.user_name"/>
                     </p>
                     <p>
                         <label for="password_login" class="subtitle is-5 has-text-white">Senha</label>
@@ -32,6 +32,10 @@
                     <p>
                         <label for="name" class="subtitle is-5 has-text-white">Nome</label>
                         <input id="name" name="name" class="input is-link is-rounded mb-4" required="required" type="text" placeholder="Nome" v-model="user.name"/>
+                    <p>
+                    <p>
+                        <label for="user_name" class="subtitle is-5 has-text-white">Nome</label>
+                        <input id="user_name" name="name" class="input is-link is-rounded mb-4" required="required" type="text" placeholder="User Name" v-model="user.user_name"/>
                     <p>
                         <label for="email" class="subtitle is-5 has-text-white">E-mail</label>
                         <input id="email" name="email" class="input is-link is-rounded mb-4" required="required" type="email" placeholder="contato@htmlecsspro.com" v-model="user.email"/>
@@ -68,11 +72,12 @@ export default {
             error: null,
             user:{
                 name: '',
+                user_name: '',
                 email: '',
                 password: '',
             },
             usuario:{
-                nome_login:'',
+                user_name:'',
                 password_login: ''
             }
         }

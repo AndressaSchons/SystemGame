@@ -1,24 +1,67 @@
 <template>
-    <div>
+    <div style="height: 100%">
         <Header />
         <h1 class="title is-3 has-text-white has-text-centered mt-6">Dashboard</h1>
-
-        <p>Usuários: {{ user.total }}</p>
-        <p>Games: {{ games.total }}</p>
+         <div class="container has-text-centered">
+            <div class='columns is-mobile is-centered'>
+                <div class='column is-6'>
+                    <div>
+                        <h1 class="title has-text-white">Users Information</h1>
+                        <hr>
+                    </div>
+                    <table class='table'>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>User</th>
+                                <th>User Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="user in users">
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.name }}</td>
+                                <td>{{ user.user_name }}</td>
+                                <td>{{ user.email }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <Rodape />
     </div>
 </template>
 
 <script>
 import Header from "./Header";
+import Rodape from "./Rodape";
 export default {
     name: "Dashboard",
-    components: {Header},
+    components: {Rodape, Header},
 
-    data() {
-        return {
-            games: [],
-            user: [],
+    data: function (){
+        return{
+            users: [],
         }
+    },
+
+    mounted() {
+        this.getUsers();
+        this.loadGames();
+    },
+
+    methods: {
+        getUsers: function () {
+            axios.get('/api/users')
+                .then((response) => {
+                    this.users = response.data;
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })
+        },
     }
 }
 </script>

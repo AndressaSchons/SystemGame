@@ -1,13 +1,14 @@
 <template>
+
     <div>
-        <input type="text" placeholder="Search" v-model="query">
-        <ul v-if="results.length > 0 && query">
-            <li v-for="result in results.slice(0,10)" :key="result.id">
-                <a :href="result.url">
-                    <div v-text="result.title"></div>
-                </a>
-            </li>
+<!--        <input type="text" class="input is-medium is-warning" placeholder="Search" v-model="search">-->
+<!--        <button type="submit" class="button is-danger is-small" @click="getSearch">Procurar</button>-->
+
+        <input type="text" class="input is-medium is-warning" v-model="keyword" placeholder="Busca">
+        <ul v-if="game.length > 0">
+            <li v-for="game in game" :key="game.id" v-text="game.name"></li>
         </ul>
+
     </div>
 </template>
 
@@ -16,22 +17,19 @@ export default {
     name: "Search",
     data() {
         return {
-            query: null,
+            game: [],
+            keywords: null,
             results: []
-        };
+
+        }
     },
     watch: {
-        query(after, before) {
-            this.searchMembers();
+        keyword(after, before) {
+            this.fetch();
         }
     },
-    methods: {
-        searchMembers() {
-            axios.get('members/search', {params: {query: this.query}})
-                .then(response => this.results = response.data)
-                .catch(error => {
-                });
-        }
+    methods:{
+
     }
 }
 </script>
