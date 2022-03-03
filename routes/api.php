@@ -32,3 +32,6 @@ Route::post('login', [Api\RegisterController::class, 'store']);
 
 Route::post('logInAccount', [Api\RegisterController::class, 'login']);
 Route::post('logout', [Api\RegisterController::class, 'destroy']);
+
+
+

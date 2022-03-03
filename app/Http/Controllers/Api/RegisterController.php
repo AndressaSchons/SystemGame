@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -37,7 +38,7 @@ class RegisterController extends Controller
             'password' => ['required', 'min:6']
         ]);
         if ($validador->fails()) {
-            return ['erro' => $validador->errors()];
+            return response()->json(['erro' => $validador->errors()], 400);
         }
 
         $user = new User;
@@ -49,7 +50,8 @@ class RegisterController extends Controller
         $user->save();
         Auth::login($user);
 
-        return redirect('/')->with('success', 'Usuário criado.');
+        $userr = User::where('user_name', $user['user_name'])->get();
+        return response()->json($userr);
     }
 
     public function login(Request $request)
@@ -70,9 +72,10 @@ class RegisterController extends Controller
         }
 
         if (Auth::attempt($data)) {
-            return response()->json(['login' => 'Deu tudo certo']);
+            $user = User::where('user_name', $data['user_name'])->get();
+            return response()->json($user);
         } else {
-            return response()->json(['error' => 'E-mail e/ou senha incorretos'], 422);
+            return response()->json(['error' => 'E-mail e/ou senha incorretos'], 400);
         }
     }
 

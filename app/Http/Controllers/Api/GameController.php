@@ -36,7 +36,7 @@ class GameController extends Controller
         if ($validator->fails()) {
             $array['erro'] = $validator->errors();
 
-            return response()->json($array, 422);
+            return response()->json($array, 400);
         }
 
         $game = new Game;
@@ -92,7 +92,7 @@ class GameController extends Controller
         } else {
             $array['erro'] = $validator->errors();
 
-            return response()->json($array, 422);
+            return response()->json($array, 400);
         }
 
     }

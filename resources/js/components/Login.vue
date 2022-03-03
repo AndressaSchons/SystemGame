@@ -8,7 +8,7 @@
                     <input type="hidden" name="_token" :value="csrf">
 
                     <p>
-                        <label for="user_name" class="subtitle is-5 has-text-white">User name</label>
+                        <label for="user_name" class="subtitle is-5 has-text-white">Username</label>
                         <input class="input is-link is-rounded mb-4" name="user_name" required="required" type="text"
                                placeholder="Email" v-model="usuario.user_name"/>
                     </p>
@@ -17,6 +17,7 @@
                         <input id="password_login" class="input is-link is-rounded mb-4" name="password_login"
                                required="required" type="password" placeholder="Senha" v-model="usuario.password"/>
                     </p>
+                    <span v-if="error" class="has-text-centered has-text-danger">{{ error }}</span>
                     <p>
                         <button type="submit" class="button is-medium is-rounded is-danger" value="Login"
                                 @click="loginaccont()">Login
@@ -41,19 +42,20 @@
                                type="text" placeholder="Nome" v-model="user.name"/>
                     <p>
                     <p>
-                        <label for="user_name" class="subtitle is-5 has-text-white">User name</label>
+                        <label for="user_name" class="subtitle is-5 has-text-white">Username</label>
                         <input id="user_name" name="user_name" class="input is-link is-rounded mb-4" required="required"
-                               type="text" placeholder="User Name" v-model="user.user_name"/>
+                               type="text" placeholder="Username" v-model="user.user_name"/>
                     <p>
                         <label for="email" class="subtitle is-5 has-text-white">E-mail</label>
                         <input id="email" name="email" class="input is-link is-rounded mb-4" required="required"
-                               type="email" placeholder="contato@htmlecsspro.com" v-model="user.email"/>
+                               type="email" placeholder="email@email.com" v-model="user.email"/>
                     </p>
                     <p>
                         <label for="password" class="subtitle is-5 has-text-white">Senha</label>
                         <input id="password" name="password" class="input is-link is-rounded mb-4" required="required"
                                type="password" v-model="user.password"/>
-                        <span v-if="error" class="has-text-centered has-text-danger">{{ error }}</span>
+                    </p>
+                    <span v-if="error" class="has-text-centered has-text-danger">{{ error }}</span>
                     <p>
                         <button type="submit" class="button is-medium is-rounded is-danger" @click.prevent="salvar()">
                             Cadastrar
@@ -106,19 +108,28 @@ export default {
         salvar() {
             axios.post('/api/login', this.user)
                 .then((response) => {
-                    alert("Usuário criado");
+                    this.$store.commit("changeUser", this.user.user_name);
+                    this.$store.commit("changeLogin");
+
+                    this.$router.push({path: '/'});
                 })
                 .catch((error) => {
-                    this.errors = error.response.data.erro;
+                    console.log(error.response);
+                    this.error = {...error.response.data.erro}
+
                 })
         },
         loginaccont() {
             axios.post('/api/logInAccount', this.usuario)
                 .then((response) => {
+                    this.$store.commit("changeUser", response.data[0].user_name);
+                    this.$store.commit("changeLogin");
+
                     this.$router.push({path: '/'});
                 })
                 .catch((error) => {
-                    this.errors = error.response.data.erro;
+                    this.error = "E-mail e/ou senha invalidos";
+                    x
                 })
         }
     }
